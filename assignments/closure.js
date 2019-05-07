@@ -11,7 +11,7 @@ const parent = () => {
 
 // console.log(child()); // Error
 
-console.log(parent()); // console.logs the parent, but doesn't give the child() string.
+console.log(parent()); // Logs the parent, but doesn't give the child() string itself.
 
 parent(); // Call the parent function and 'return child'
 
@@ -24,7 +24,7 @@ const joey = parent(); // Logs the parent's name, and STORES JOEY as child()
 console.log(joey()); // NOW logs the child's name.
 // This only works because the line above stored child as a value before we logged it.
 
-
+console.log('\n');
 
 
 
@@ -34,14 +34,70 @@ console.log(joey()); // NOW logs the child's name.
 // ==== Challenge 2: Create a counter function ====
 const counter = () => {
   // Return a function that when invoked increments and returns a counter variable.
+  increment = 0; //Set initial value
+
+  //Create a new function:
+  const counting = () => {
+
+    // New function increments the value
+    return ++increment;
+  }
+  // Return the new function.
+  return counting;
 };
 // Example usage: const newCounter = counter();
 // newCounter(); // 1
 // newCounter(); // 2
+
+// This first const sets increment = 0. After that, realCounter ONLY equals the new function
+const realCounter = counter();
+
+//Everytime we call realCounter, it uses the counting function and keeps incrementing by 1.
+console.log(realCounter());
+console.log(realCounter());
+console.log(realCounter());
+console.log(realCounter());
+
+
+
+console.log('\n');
 
 // ==== Challenge 3: Create a counter function with an object that can increment and decrement ====
 const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  count = 0;
+  count0 = {
+    increment: () => ++count,
+    decrement: () => --count,
+  }
+  return count0;
 };
+
+// This part is confusing to me:
+// In the first example of closure, the local child() function wasn't globally usable.
+counterFactory();
+
+// But here, the count variable and the count0 object are both globally usable.
+console.log(count); // --> 0
+count0.increment();
+count0.increment();
+console.log(count); // --> 2
+count0.decrement();
+console.log(count); // --> 1
+
+console.log('\n');
+
+// Back to the stuff that makes sense:
+
+// countMe is now the new object, and it can be used as methods (see below)
+const countMe = counterFactory();
+
+console.log(count); // Initial count, a NEW count variable that starts over at 0.
+countMe.increment(); // Increment
+console.log(count); // Count went up by one
+countMe.decrement();
+countMe.decrement();
+countMe.decrement(); // Decrease thrice
+console.log(count); // --> -2

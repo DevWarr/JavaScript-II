@@ -29,27 +29,41 @@ function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
   return cb(arr.length);
 }
+getLength(items, console.log);
+
 
 function last(arr, cb) {
   // last passes the last item of the array into the callback.
   return cb(arr[arr.length - 1]);
 }
+last(items, console.log);
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
   return cb(x + y);
 }
+sumNums(5, 7, console.log);
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
   return cb(x * y);
 }
+multiplyNums(17, 34, console.log);
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
   return list.includes(item) ? cb(true) : cb(false)
 }
+contains('Pencil', items, console.log);
+
+//Taking it a little step further...
+contains('Book', items, function(boolean) {
+  console.log(boolean ? `Yep! We got it.` : `Sorry, not here.`);
+}) // This line has curly braces AND parentheses.
+// That's because the braces end the cb function,
+// and the closing parenthesis ends the 'contains' arguments.
+
 
 /* STRETCH PROBLEM */
 

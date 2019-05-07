@@ -67,34 +67,20 @@ const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
-  count = 0;
-  count0 = {
+  let count = 0;
+  const count0 = {
     increment: () => ++count,
     decrement: () => --count,
   }
   return count0;
 };
 
-// This part is confusing to me:
-// In the first example of closure, the local child() function wasn't globally usable.
-counterFactory();
-
-// But here, the count variable and the count0 object are both globally usable.
-console.log(count); // --> 0
-count0.increment();
-count0.increment();
-console.log(count); // --> 2
-count0.decrement();
-console.log(count); // --> 1
-
 console.log('\n');
-
-// Back to the stuff that makes sense:
 
 // countMe is now the new object, and it can be used as methods (see below)
 const countMe = counterFactory();
 
-console.log(count); // Initial count, a NEW count variable that starts over at 0.
+console.log(count); // Initial count, starts over at 0.
 countMe.increment(); // Increment
 console.log(count); // Count went up by one
 countMe.decrement();

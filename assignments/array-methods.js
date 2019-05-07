@@ -114,8 +114,14 @@ console.log(warehouseOrder);
 
 
 
-// ==== Problem 2 ====
-// 
+// ==== Problem 2: Use sort() ====
+// Sort wasn't covered, but we may as well get some tackling in now.
+// Because we're still in the olden days, we want to sort everyone by alphabetical order using their last name. Use the sort() method to sort the entire array by last name.
+lastNameSorting = runners.sort((objA, objB) => objA.last_name > objB.last_name ? 1 : -1);
+console.log(lastNameSorting);
 
 
-// Problem 3
+// ==== Problem 3 ====
+// Complete challenge one using the map method as opposed to .forEach() :
+fullNameMap = runners.map(obj => obj.first_name + ' ' + obj.last_name); // Super easy. Almost the exact same thing!
+console.log(fullNameMap);

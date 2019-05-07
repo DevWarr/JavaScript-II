@@ -38,17 +38,20 @@ function last(arr, cb) {
 }
 last(items, console.log);
 
+
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
   return cb(x + y);
 }
 sumNums(5, 7, console.log);
 
+
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
   return cb(x * y);
 }
 multiplyNums(17, 34, console.log);
+
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
@@ -65,10 +68,23 @@ contains('Book', items, function(boolean) {
 // and the closing parenthesis ends the 'contains' arguments.
 
 
+
 /* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  noDupes = [] // Empty Array
+
+  // For each value in our given array...
+  array.forEach(v => {
+
+    // If it DOESN'T ALREADY EXIST in our noDupes array, then push it in!
+    if (!noDupes.includes(v)) {noDupes.push(v)}
+  });
+
+  //return with callback
+  return cb(noDupes);
 }
+removeDuplicates([12, 12, 12, 12, 12, 13, 1, 4, 5, 5, 5, 7, 4, 5, 12], console.log);

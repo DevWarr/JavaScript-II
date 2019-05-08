@@ -56,28 +56,72 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+
+runners.forEach(obj => fullName.push(obj.first_name + " " + obj.last_name));
+
 console.log(fullName);
+
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+
+allCaps = runners.map(obj => obj.first_name.toUpperCase());
+
 console.log(allCaps); 
+
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+
+largeShirts = runners.filter(obj => obj.shirt_size === "L");
+
 console.log(largeShirts);
+
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+
+ticketPriceTotal = runners.reduce((accum, obj) => accum + obj.donation, 0);
+
 console.log(ticketPriceTotal);
+
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// ==== Problem 1 ====
+// The warehouse that was supposed to ship out all of the shirts lost the original order! Create an object that has a property for each shirt size attached to a value of how many shirts the warehouse needs to send.
+warehouseOrder = {
+    "XS": 0,
+    "S": 0,
+    "M": 0,
+    "L": 0,
+    "XL": 0,
+    "2XL": 0,
+    "3XL": 0
+}; 
 
-// Problem 2
+// Create a new array that re-maps everything to only list each person's shirt size:
+const shirtSizes = runners.map(obj => obj.shirt_size);
+// console.log(shirtsizes); // Just to test that the array is working 
 
-// Problem 3
+// Now, for each value of shirtSizes, find the key in our object that matches the value and increase it's count by one:
+shirtSizes.forEach(v => warehouseOrder[v]++);
+console.log(warehouseOrder);
+
+
+
+// ==== Problem 2: Use sort() ====
+// Sort wasn't covered, but we may as well get some tackling in now.
+// Because we're still in the olden days, we want to sort everyone by alphabetical order using their last name. Use the sort() method to sort the entire array by last name.
+lastNameSorting = runners.sort((objA, objB) => objA.last_name > objB.last_name ? 1 : -1);
+console.table(lastNameSorting);
+
+
+// ==== Problem 3 ====
+// Complete challenge one using the map method as opposed to .forEach() :
+fullNameMap = runners.map(obj => obj.first_name + ' ' + obj.last_name); // Super easy. Almost the exact same thing!
+console.log(fullNameMap);

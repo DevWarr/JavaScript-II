@@ -27,24 +27,48 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
 function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
+  return cb(arr.length);
 }
+getLength(items, console.log);
+
 
 function last(arr, cb) {
   // last passes the last item of the array into the callback.
+  return cb(arr[arr.length - 1]);
 }
+last(items, console.log);
+
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  return cb(x + y);
 }
+sumNums(5, 7, console.log);
+
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  return cb(x * y);
 }
+multiplyNums(17, 34, console.log);
+
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  return list.includes(item) ? cb(true) : cb(false)
 }
+contains('Pencil', items, console.log);
+
+//Taking it a little step further...
+contains('Pencil', items, function(boolean) {
+  console.log(boolean ? `Yep! We got it.` : `Sorry, not here.`);
+}) 
+// This line has curly braces AND parentheses.
+// That's because the braces end the cb function,
+// and the closing parenthesis ends the 'contains' arguments.
+
+
 
 /* STRETCH PROBLEM */
 
@@ -52,4 +76,16 @@ function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  noDupes = [] // Empty Array
+
+  // For each value in our given array...
+  array.forEach(v => {
+
+    // If it DOESN'T ALREADY EXIST in our noDupes array, then push it in!
+    if (!noDupes.includes(v)) {noDupes.push(v)}
+  });
+
+  //return with callback
+  return cb(noDupes);
 }
+removeDuplicates([12, 12, 12, 12, 12, 13, 1, 4, 5, 5, 5, 7, 4, 5, 12], console.log);

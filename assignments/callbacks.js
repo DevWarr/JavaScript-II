@@ -61,9 +61,10 @@ function contains(item, list, cb) {
 contains('Pencil', items, console.log);
 
 //Taking it a little step further...
-contains('Book', items, function(boolean) {
+contains('Pencil', items, function(boolean) {
   console.log(boolean ? `Yep! We got it.` : `Sorry, not here.`);
-}) // This line has curly braces AND parentheses.
+}) 
+// This line has curly braces AND parentheses.
 // That's because the braces end the cb function,
 // and the closing parenthesis ends the 'contains' arguments.
 

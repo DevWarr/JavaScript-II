@@ -118,7 +118,7 @@ console.log(warehouseOrder);
 // Sort wasn't covered, but we may as well get some tackling in now.
 // Because we're still in the olden days, we want to sort everyone by alphabetical order using their last name. Use the sort() method to sort the entire array by last name.
 lastNameSorting = runners.sort((objA, objB) => objA.last_name > objB.last_name ? 1 : -1);
-console.log(lastNameSorting);
+console.table(lastNameSorting);
 
 
 // ==== Problem 3 ====

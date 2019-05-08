@@ -80,10 +80,10 @@ console.log('\n');
 // countMe is now the new object, and it can be used as methods (see below)
 const countMe = counterFactory();
 
-console.log(count); // Initial count, starts over at 0.
-countMe.increment(); // Increment
-console.log(count); // Count went up by one
+// console.log(count); // Initial count, starts over at 0.
+console.log(countMe.increment()); // Increment
+// console.log(count); // Count went up by one
 countMe.decrement();
 countMe.decrement();
-countMe.decrement(); // Decrease thrice
-console.log(count); // --> -2
+console.log(countMe.decrement()); // Decrease thrice
+// console.log(count); // --> -2
